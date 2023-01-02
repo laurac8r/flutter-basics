@@ -43,3 +43,25 @@ class CenterComponent extends PositionComponent {
     );
   }
 }
+
+class MyComponent extends PositionComponent {
+  Future<void> onLoad() async {
+    add(RectangleHitbox());
+  }
+}
+
+class MyCollidable extends PositionComponent with CollisionCallbacks {
+  @override
+  void onCollision(Set<Vector2> points, PositionComponent other) {
+    if (other is MyComponent) {
+      // ...
+    }
+  }
+
+  @override
+  void onCollisionEnd(PositionComponent other) {
+    if (other is MyComponent) {
+      // ...
+    }
+  }
+}
